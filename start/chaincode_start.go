@@ -244,8 +244,8 @@ Openorder.Status = "pending"
 Openorder.OrderID = "abcd"
 Openorder.Litres = args[0]
 orderasbytes,_ := json.Marshal(Openorder)
-//stub.PutState("abcd",orderasbytes)
-	stub.PutState("hi",[]byte("we are inside order milk))
+//stub.PutState("abcd",orderasbytes)'
+	stub.PutState("hi",[]byte("we are inside order milk"))
 var a []string
 a[0] = Openorder.OrderID
 t.init_supplier(stub,a)

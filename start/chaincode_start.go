@@ -273,10 +273,10 @@ milkAsBytes, _ =json.Marshal(res)
 
 stub.PutState(id,milkAsBytes)
 	
-
+/*
 var a []string
 a[0] = Openorder.OrderID
-t.init_supplier(stub,a)
+t.init_supplier(stub,a) */
 return nil,nil
 }
 func (t *SimpleChaincode) init_supplier(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {

@@ -94,7 +94,9 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 
         }else if function == "Create_coinlogistics"{              //creates a coin - invoked by logistics 
                 return t.Create_coinmarket(stub, args)
-       } 
+	} else if function == "Order_milk"{
+		return t.Order_milk(stub,args)
+	}
 
 
      return nil,nil

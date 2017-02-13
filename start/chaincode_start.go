@@ -244,7 +244,13 @@ Openorder.Status = "pending"
 Openorder.OrderID = "abcd"
 Openorder.Litres = args[0]
 orderasbytes,_ := json.Marshal(Openorder)
-stub.PutState("abcd",orderasbytes)
+	var err error
+err = stub.PutState("abcd",orderasbytes)
+	
+	if err != nil {
+		return nil, err
+}
+	
 	//stub.PutState("hi",[]byte("we are inside order milk"))
 /*
 
@@ -273,10 +279,11 @@ milkAsBytes, _ =json.Marshal(res)
 
 stub.PutState(id,milkAsBytes)
 	
-*/
 var a []string
 a[0] = Openorder.OrderID
 t.init_supplier(stub,a)
+
+*/
 return nil,nil
 }
 func (t *SimpleChaincode) init_supplier(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {

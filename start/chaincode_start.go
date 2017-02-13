@@ -238,16 +238,16 @@ return valAsbytes, nil										       //send it onward
 }
 
 func (t *SimpleChaincode) Order_milk(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
-/*Openorder := Order{}
+Openorder := Order{}
 Openorder.User = "Market"
 Openorder.Status = "pending"
 Openorder.OrderID = "abcd"
 Openorder.Litres = args[0]
 orderasbytes,_ := json.Marshal(Openorder)
-//stub.PutState("abcd",orderasbytes)'
-	stub.PutState("hi",[]byte("we are inside order milk"))
+stub.PutState("abcd",orderasbytes)
+	//stub.PutState("hi",[]byte("we are inside order milk"))
+/*
 
-*/
 id := args[0]
 user := args[1]
 litres :=args[2] 
@@ -273,10 +273,10 @@ milkAsBytes, _ =json.Marshal(res)
 
 stub.PutState(id,milkAsBytes)
 	
-/*
+*/
 var a []string
 a[0] = Openorder.OrderID
-t.init_supplier(stub,a) */
+t.init_supplier(stub,a)
 return nil,nil
 }
 func (t *SimpleChaincode) init_supplier(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {

@@ -147,7 +147,7 @@ func (t *SimpleChaincode) uuidgeneration(stub shim.ChaincodeStubInterface, args 
 u1 := uuid.NewV4()
     fmt.Printf("UUIDv4: %s\n", u1)
 	key := args[0]
-	stub.PutState(key,[]byte(u1))
+	//stub.PutState(,[]byte())
 	return nil, nil
 }
 

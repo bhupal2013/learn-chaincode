@@ -6,7 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"encoding/json"
-
+ "github.com/satori/go.uuid"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 )
 
@@ -135,12 +135,21 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 	       return t.cointransfer(stub,args)
         }else if function == "View_order"{                     // To check if any orders are  something - invoked by Supplier- params - truly speaking- no need any inputs- but can pass anything as arguments     
 	        return t.View_order(stub,args)
-        }
+        }else if function == "uuidgeneration"{
+		return t.uuidgeneration(stub,args)
+	}
 	fmt.Println("invoke did not find func: " + function)					//error
 
 	return nil, errors.New("Received unknown function invocation: " + function)
 }
 
+func (t *SimpleChaincode) uuidgeneration(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+u1 := uuid.NewV4()
+    fmt.Printf("UUIDv4: %s\n", u1)
+	key := args[0]
+	stub.PutState(key,[]byte(u1))
+	return nil, nil
+}
 
 
 func (t *SimpleChaincode) Create_milkcontainer(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {

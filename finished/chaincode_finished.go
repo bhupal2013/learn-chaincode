@@ -280,11 +280,16 @@ return nil,nil
 func (t *SimpleChaincode) Order_milk(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 //"20"
 //litres
-var err error
+
 Openorder := Order{}
 Openorder.User = "Market"
 Openorder.Status = "pending"
-Openorder.OrderID = "abcd"
+Openorder.OrderID , err := newUUID()
+	if err != nil {
+		fmt.Printf("error: %v\n", err)
+	}
+	fmt.Printf("%s\n", Openorder.OrderID )
+
 Openorder.Litres = args[0]
 orderAsBytes,_ := json.Marshal(Openorder)
 	

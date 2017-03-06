@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"encoding/json"
  "github.com/satori/go.uuid"
+	"strings"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 )
 
@@ -162,8 +163,9 @@ var err error
 user := args[0]
 litres :=args[1] 
 	
-id := uuid.NewV4()
-    fmt.Printf("UUIDv4: %s\n", id)
+u1 := uuid.NewV4()
+    fmt.Printf("UUIDv4: %s\n", u1)
+	id := string(u1)
 // Checking if the container already exists in the network
 milkAsBytes, err := stub.GetState(id) 
 if err != nil {

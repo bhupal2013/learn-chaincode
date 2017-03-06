@@ -158,10 +158,12 @@ var err error
 // "1x22" "supplier" 20 
 // args[0] args[1] args[2] 
 
-id := args[0]
-user := args[1]
-litres :=args[2] 
+
+user := args[0]
+litres :=args[1] 
 	
+id := uuid.NewV4()
+    fmt.Printf("UUIDv4: %s\n", id)
 // Checking if the container already exists in the network
 milkAsBytes, err := stub.GetState(id) 
 if err != nil {

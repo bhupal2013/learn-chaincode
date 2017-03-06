@@ -146,7 +146,7 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 func (t *SimpleChaincode) uuidgeneration(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 u1 := uuid.NewV4()
     fmt.Printf("UUIDv4: %s\n", u1)
-	key := args[0]
+	//key := args[0]
 	//stub.PutState(,[]byte())
 	return nil, nil
 }

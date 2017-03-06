@@ -4,6 +4,8 @@ package main
 
 import (
 	"errors"
+	"crypto/rand"
+	"io"
 	"fmt"
 	"encoding/json"
  "github.com/satori/go.uuid"
@@ -158,7 +160,7 @@ var err error
 // "1x22" "supplier" 20 
 // args[0] args[1] args[2] 
 
-uuid, err := newUUID(stub)
+uuid, err := newUUID()
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
 	}

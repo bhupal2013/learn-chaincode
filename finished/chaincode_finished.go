@@ -208,25 +208,11 @@ stub.PutState(res.ContainerID,milkAsBytes)
 	jsonAsBytes, _ := json.Marshal(containerIndex)
         err = stub.PutState(containerIndexStr, jsonAsBytes)
 
-// append the container ID to the existing assets of the Supplier
-	/*
-	supplierassetAsBytes,_ := stub.GetState("SupplierAssets")        // The same key which we used in Init function 
-	supplierasset := Asset{}
-	json.Unmarshal( supplierassetAsBytes, &supplierasset)
-	supplierasset.containerIDs = append(supplierasset.containerIDs, res.ContainerID)
-	supplierassetAsBytes,_=  json.Marshal(supplierasset)
-	stub.PutState("SupplierAssets",supplierassetAsBytes)
-*/
-	
-	/*args[0] = "SupplierAssets"
-	t.Query(stub,readargs)
-	*/
-	//byteid := json.Marshal(id)
 	return nil,nil
 
 }
 
-func newUUID() (string, error) {
+func newUUID(stub shim.ChaincodeStubInterface) (string, error) {
 	Uuid := make([]byte, 16)
 	n, err := io.ReadFull(rand.Reader, Uuid)
 	if n != len(Uuid) || err != nil {
@@ -308,7 +294,7 @@ if err != nil {
 	json.Unmarshal(ordersAsBytes, &orders)				
 	
 	orders.OpenOrders = append(orders.OpenOrders , Openorder);		//append the new order - Openorder
-	fmt.Println("! appended Openorder to orders")
+	fmt.Println(" appended", Openorder.OrderID "to orders")
 	jsonAsBytes, _ := json.Marshal(orders)
 	err = stub.PutState(openOrdersStr, jsonAsBytes)		  // Update the value of the key openOrdersStr
 	if err != nil {

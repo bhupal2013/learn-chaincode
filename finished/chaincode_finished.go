@@ -299,7 +299,7 @@ if err != nil {
 	json.Unmarshal(ordersAsBytes, &orders)				
 	
 	orders.OpenOrders = append(orders.OpenOrders , Openorder);		//append the new order - Openorder
-	fmt.Println(" appended", Openorder.OrderID "to orders")
+	fmt.Println(" appended", Openorder.OrderID ,"to orders")
 	jsonAsBytes, _ := json.Marshal(orders)
 	err = stub.PutState(openOrdersStr, jsonAsBytes)		  // Update the value of the key openOrdersStr
 	if err != nil {

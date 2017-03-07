@@ -160,7 +160,7 @@ var err error
 // "1x22" "supplier" 20 
 // args[0] args[1] args[2] 
 
-Uuid, err := newUUID()
+Uuid, err := newUUID(stub)
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
 	}
@@ -275,7 +275,7 @@ var err error
 Openorder := Order{}
 Openorder.User = "Market"
 Openorder.Status = "pending"
-Openorder.OrderID , err = newUUID()
+Openorder.OrderID , err = newUUID(stub)
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
 	}

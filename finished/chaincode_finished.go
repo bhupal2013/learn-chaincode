@@ -194,6 +194,11 @@ milkAsBytes, _ =json.Marshal(res)
 	fmt.Printf("%v+\n",res)
 stub.PutState(res.ContainerID,milkAsBytes)
 	
+	
+	milkAsBytes, err = stub.GetState(res.ContainerID)
+	json.Unmarshal(milkAsBytes, &res)
+	fmt.Printf("%v+\n",res)
+	
 //Update containerIndexStr	
 	containerAsBytes, err := stub.GetState(containerIndexStr)
 	if err != nil {
